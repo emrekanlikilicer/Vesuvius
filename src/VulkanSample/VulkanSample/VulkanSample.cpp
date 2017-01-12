@@ -156,8 +156,75 @@ bool ChoosePrimaryPhysicalDevice(const std::vector<VkPhysicalDevice> physicalDev
 	return true;
 }
 
+VkResult CreateDevice(VkPhysicalDevice physicalDevice, VkDevice& device, VkQueue& computeQueue, VkQueue& graphicsQueue)
+{
+	// Find the queue family indexes for graphics and compute queues.
+	uint32_t queueFamilyIndexGraphics = 0;
+	uint32_t queueFamilyIndexCompute  = 1;
+	uint32_t queueCount = 1;
+
+	std::vector<VkQueueFamilyProperties> queueProperties;
+	if (GetQueueProperties(physicalDevice, queueProperties))
+	{  
+		// find compute queue
+		for(int index = 0; index < queueProperties.size(); index++)
+		{
+			VkQueueFamilyProperties property = queueProperties[index];
+			if (property.queueFlags & VK_QUEUE_COMPUTE_BIT)
+			{
+				queueFamilyIndexCompute = index;
+			}
+			if (property.queueFlags & VK_QUEUE_GRAPHICS_BIT)
+			{
+				queueFamilyIndexGraphics = index;
+			}
+		}
+	}
+
+	cout << "Compute  Family Index: " << queueFamilyIndexCompute  << endl;
+	cout << "Graphics Family Index: " << queueFamilyIndexGraphics << endl;
+
+	VkDeviceQueueCreateInfo deviceQueueCreateInfo[2];
+	memset(&deviceQueueCreateInfo, 0, sizeof(deviceQueueCreateInfo));
+
+	deviceQueueCreateInfo[0].sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
+	deviceQueueCreateInfo[0].queueFamilyIndex = queueFamilyIndexCompute;
+	deviceQueueCreateInfo[0].queueCount = 1;
+
+	deviceQueueCreateInfo[1].sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
+	deviceQueueCreateInfo[1].queueFamilyIndex = queueFamilyIndexGraphics;
+	deviceQueueCreateInfo[1].queueCount = 1;
+
+	VkDeviceCreateInfo deviceCreateInfo;
+	memset(&deviceCreateInfo, 0, sizeof(VkDeviceCreateInfo));
+
+	deviceCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
+	deviceCreateInfo.queueCreateInfoCount = 2;
+	deviceCreateInfo.pQueueCreateInfos = deviceQueueCreateInfo;
+
+	if (queueFamilyIndexCompute == queueFamilyIndexGraphics)
+	{
+		deviceCreateInfo.queueCreateInfoCount = 1;
+	}
+
+	VkResult result = vkCreateDevice(physicalDevice, &deviceCreateInfo, NULL, &device);
+	if (result != VK_SUCCESS)
+	{
+		cout << "Failed to create device: " << result << endl;
+		return result;
+	}
+
+	vkGetDeviceQueue(device, queueFamilyIndexCompute,  0, &computeQueue );
+	vkGetDeviceQueue(device, queueFamilyIndexGraphics, 0, &graphicsQueue);
+
+	cout << "Compute  Queue retrieved: " << std::hex << computeQueue  << endl;
+	cout << "Graphics Queue retrieved: " << std::hex << graphicsQueue << endl;
+	return result;
+}
+
 int main()
 {
+	VkResult result;
 	//
 	// Create an VkInstance
 	//
@@ -208,11 +275,26 @@ int main()
 		cout << "Primary device found : " << props.deviceName << endl;
 	}
 
+	VkDevice device;
+	VkQueue  computeQueue;
+	VkQueue  graphicsQueue;
+	if (VK_SUCCESS != CreateDevice(primaryPhysicalDevice, device, computeQueue, graphicsQueue))
+	{
+		cout << "Could not create a device from physical device." << endl;
+		return -1;
+	}
 	
 
 	//
 	// Terminate the application
 	//
+	result = vkDeviceWaitIdle(device);
+	if (result != VK_SUCCESS)
+	{
+		cout << "Failed to wait on device operations to be idle" << endl;
+	}
+
+	vkDestroyDevice(device, NULL);
 	vkDestroyInstance(instance, NULL);
 	
 	cout << "Program completed successfully" << endl;
