@@ -1,3 +1,5 @@
 *.tlog
 *.lastbuildstate
 *.idb
+*.opendb
+*.db
