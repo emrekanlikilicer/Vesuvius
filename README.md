@@ -1,4 +1,4 @@
-# graphics
-Graphics
+# vesuvius
+Vesuvius
 
-This is an experiment project to learn Vulkan.
+An Object oriented wrapper around Vulkan spec.
