@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Vulkan.h"
+#include <vector>
 
 namespace vesuvius
 {
@@ -10,6 +11,11 @@ namespace vesuvius
 
 		VkPhysicalDeviceProperties
 		GetPhysicalDeviceProperties();
+		
+		VkResult
+		GetPhysicalDeviceQueueFamilyProperties(
+			_Out_ std::vector<VkQueueFamilyProperties>& QueueFamilyProperties
+		);
 
 	private:
 
