@@ -146,10 +146,12 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CVkDevice.h" />
     <ClInclude Include="CVkInstance.h" />
     <ClInclude Include="CVkPhysicalDevice.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CVkDevice.cpp" />
     <ClCompile Include="CVkInstance.cpp" />
     <ClCompile Include="CVkPhysicalDevice.cpp" />
   </ItemGroup>

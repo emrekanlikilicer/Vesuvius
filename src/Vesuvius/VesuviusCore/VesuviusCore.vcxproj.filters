@@ -24,12 +24,18 @@
     <ClInclude Include="CVkPhysicalDevice.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CVkDevice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CVkInstance.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CVkPhysicalDevice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CVkDevice.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
