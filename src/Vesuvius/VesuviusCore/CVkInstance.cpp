@@ -1,7 +1,9 @@
 #include "CVkInstance.h"
 
+using namespace vesuvius;
+
 VkResult 
-vesuvius::CVkInstance::CreateInstance(
+CVkInstance::CreateInstance(
 	_In_     const VkInstanceCreateInfo&   CreateInstanceInfo, 
 	_In_opt_ const VkAllocationCallbacks*  AllocationCallbacks,
 	_Out_    std::shared_ptr<CVkInstance>& Instance
@@ -30,13 +32,13 @@ vesuvius::CVkInstance::CreateInstance(
 	return result;
 }
 
-vesuvius::CVkInstance::CVkInstance()
+CVkInstance::CVkInstance()
 {
 	memset(&m_AllocationCallbacks, 0, sizeof(m_AllocationCallbacks));
 	memset(&m_instance, 0, sizeof(m_instance));
 }
 
-vesuvius::CVkInstance::~CVkInstance()
+CVkInstance::~CVkInstance()
 {
 	VkAllocationCallbacks* pCallbacks = NULL;
 
@@ -52,7 +54,7 @@ vesuvius::CVkInstance::~CVkInstance()
 }
 
 VkResult
-vesuvius::CVkInstance::Create(
+CVkInstance::Create(
 	_In_     const VkInstanceCreateInfo&  CreateInstanceInfo,
 	_In_opt_ const VkAllocationCallbacks* AllocationCallbacks
 )
@@ -67,7 +69,7 @@ vesuvius::CVkInstance::Create(
 }
 
 VkResult
-vesuvius::CVkInstance::EnumeratePhysicalDevices(
+CVkInstance::EnumeratePhysicalDevices(
 	_Out_ std::vector<CVkPhysicalDevice>&  PhysicalDevices
 ) noexcept
 {
@@ -113,3 +115,4 @@ vesuvius::CVkInstance::EnumeratePhysicalDevices(
 
 	return result;
 }
+

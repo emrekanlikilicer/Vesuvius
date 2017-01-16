@@ -29,7 +29,7 @@ namespace vesuvius
 		EnumeratePhysicalDevices(
 			_Out_ std::vector<CVkPhysicalDevice>&  PhysicalDevices
 		) noexcept;
-		
+
 		~CVkInstance();
 
 	private:
@@ -49,6 +49,5 @@ namespace vesuvius
 			VkAllocationCallbacks callbacks;
 			bool                  useCallbacks;
 		} m_AllocationCallbacks;
-
 	};
 }
