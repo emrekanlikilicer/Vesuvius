@@ -34,7 +34,7 @@ CVkInstance::CreateInstance(
 
 CVkInstance::CVkInstance()
 {
-	memset(&m_AllocationCallbacks, 0, sizeof(m_AllocationCallbacks));
+	memset(&m_allocationCallbacks, 0, sizeof(m_allocationCallbacks));
 	memset(&m_instance, 0, sizeof(m_instance));
 }
 
@@ -42,9 +42,9 @@ CVkInstance::~CVkInstance()
 {
 	VkAllocationCallbacks* pCallbacks = NULL;
 
-	if (m_AllocationCallbacks.useCallbacks)
+	if (m_allocationCallbacks.useCallbacks)
 	{
-		pCallbacks = &m_AllocationCallbacks.callbacks;
+		pCallbacks = &m_allocationCallbacks.callbacks;
 	}
 
 	if (m_instance)
@@ -61,8 +61,8 @@ CVkInstance::Create(
 {
 	if (AllocationCallbacks != NULL)
 	{
-		m_AllocationCallbacks.callbacks    = *AllocationCallbacks;
-		m_AllocationCallbacks.useCallbacks = true;
+		m_allocationCallbacks.callbacks    = *AllocationCallbacks;
+		m_allocationCallbacks.useCallbacks = true;
 	}
 
 	return vkCreateInstance(&CreateInstanceInfo, AllocationCallbacks, &m_instance);

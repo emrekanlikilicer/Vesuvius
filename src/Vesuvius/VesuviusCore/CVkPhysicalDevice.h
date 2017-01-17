@@ -12,12 +12,12 @@ namespace vesuvius
 	public:
 
 		VkPhysicalDeviceProperties
-		GetPhysicalDeviceProperties();
+		GetPhysicalDeviceProperties() noexcept;
 		
 		VkResult
 		GetPhysicalDeviceQueueFamilyProperties(
 			_Out_ std::vector<VkQueueFamilyProperties>& QueueFamilyProperties
-		);
+		) noexcept;
 
 		VkResult
 		CreateDevice(
