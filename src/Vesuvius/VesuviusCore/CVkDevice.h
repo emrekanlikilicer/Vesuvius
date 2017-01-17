@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Vulkan.h"
+#include <vector>
 
 namespace vesuvius
 {
@@ -9,10 +10,15 @@ namespace vesuvius
 	public:
 
 		~CVkDevice();
+
+		VkResult 
+		WaitIdle() noexcept;
+
 	private:
 
 		CVkDevice(
 			_In_ const VkDevice device,
+			_In_     const VkDeviceCreateInfo      DeviceCreateInfo,
 			_In_opt_ const VkAllocationCallbacks * AllocationCallbacks
 		);
 
@@ -24,7 +30,16 @@ namespace vesuvius
 		{
 			VkAllocationCallbacks callbacks;
 			bool                  useCallbacks;
-		} m_AllocationCallbacks;
+		} m_allocationCallbacks;
+
+		struct QueueProperties
+		{
+			VkDeviceQueueCreateFlags    flags;
+			uint32_t                    queueFamilyIndex;
+			uint32_t                    queueCount;
+		};
+
+		std::vector<QueueProperties> m_queueCreateInfos;
 
 		friend class CVkPhysicalDevice;
 	};

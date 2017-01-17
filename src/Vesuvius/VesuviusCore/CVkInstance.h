@@ -48,6 +48,6 @@ namespace vesuvius
 		{
 			VkAllocationCallbacks callbacks;
 			bool                  useCallbacks;
-		} m_AllocationCallbacks;
+		} m_allocationCallbacks;
 	};
 }

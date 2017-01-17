@@ -129,6 +129,7 @@
       <SDLCheck>true</SDLCheck>
       <EnablePREfast>true</EnablePREfast>
       <AdditionalIncludeDirectories>..\..\..\..\Vulkan-LoaderAndValidationLayers\include\vulkan</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

@@ -10,7 +10,7 @@ CVkPhysicalDevice::CVkPhysicalDevice(
 }
 
 VkPhysicalDeviceProperties
-CVkPhysicalDevice::GetPhysicalDeviceProperties()
+CVkPhysicalDevice::GetPhysicalDeviceProperties() noexcept
 {
 	VkPhysicalDeviceProperties properties;
 	vkGetPhysicalDeviceProperties(m_physicalDevice, &properties);
@@ -20,7 +20,8 @@ CVkPhysicalDevice::GetPhysicalDeviceProperties()
 
 VkResult 
 CVkPhysicalDevice::GetPhysicalDeviceQueueFamilyProperties(
-	_Out_ std::vector<VkQueueFamilyProperties>& QueueFamilyProperties)
+	_Out_ std::vector<VkQueueFamilyProperties>& QueueFamilyProperties
+) noexcept
 {
 	QueueFamilyProperties.clear();
 
@@ -70,7 +71,7 @@ CVkPhysicalDevice::CreateDevice(
 
 	try
 	{
-		Device.reset(new CVkDevice(device, AllocationCallbacks));
+		Device.reset(new CVkDevice(device, DeviceCreateInfo, AllocationCallbacks));
 	}
 	catch (std::bad_alloc&)
 	{
