@@ -35,5 +35,8 @@
     <ClCompile Include="CVkPhysicalDeviceTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CVkDeviceTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

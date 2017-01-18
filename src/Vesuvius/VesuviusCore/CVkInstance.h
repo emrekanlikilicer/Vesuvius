@@ -34,6 +34,8 @@ namespace vesuvius
 
 	private:
 		CVkInstance();
+		CVkInstance(const CVkInstance&);
+		CVkInstance& operator=(const CVkInstance&);
 
 		VkResult
 		Create(

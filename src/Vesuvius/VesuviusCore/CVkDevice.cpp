@@ -15,6 +15,31 @@ CVkDevice::~CVkDevice()
 }
 
 VkResult 
+CVkDevice::GetQueue(
+	_In_  uint32_t QueueFamilyIndex, 
+	_In_  uint32_t QueueIndex, 
+	_Out_ std::shared_ptr<CVkQueue>& Queue
+) noexcept
+{
+	VkQueue queue;
+	vkGetDeviceQueue(m_device,
+		QueueFamilyIndex,
+		QueueIndex,
+		&queue);
+
+	try
+	{
+		Queue.reset(new CVkQueue(queue, QueueFamilyIndex, QueueIndex));
+	}
+	catch (std::bad_alloc&)
+	{
+		return VK_ERROR_OUT_OF_HOST_MEMORY;
+	}
+
+	return VK_SUCCESS;
+}
+
+VkResult 
 CVkDevice::WaitIdle() noexcept
 {
 	return vkDeviceWaitIdle(m_device);

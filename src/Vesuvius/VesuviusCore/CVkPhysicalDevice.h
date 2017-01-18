@@ -1,9 +1,11 @@
 #pragma once
 
 #include "Vulkan.h"
+
 #include "CVkDevice.h"
-#include <vector>
+
 #include <memory>
+#include <vector>
 
 namespace vesuvius
 {
