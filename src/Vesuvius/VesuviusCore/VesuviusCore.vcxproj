@@ -150,11 +150,13 @@
     <ClInclude Include="CVkDevice.h" />
     <ClInclude Include="CVkInstance.h" />
     <ClInclude Include="CVkPhysicalDevice.h" />
+    <ClInclude Include="CVkQueue.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CVkDevice.cpp" />
     <ClCompile Include="CVkInstance.cpp" />
     <ClCompile Include="CVkPhysicalDevice.cpp" />
+    <ClCompile Include="CVkQueue.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
