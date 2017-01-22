@@ -30,6 +30,9 @@
     <ClInclude Include="CVkQueue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CVkCommandPool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CVkInstance.cpp">
@@ -42,6 +45,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CVkQueue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CVkCommandPool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
