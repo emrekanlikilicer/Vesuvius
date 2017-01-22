@@ -149,6 +149,10 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>..\x64\Release\Vesuviuscore.lib;%(AdditionalDependencies)</AdditionalDependencies>
+<<<<<<< HEAD
+=======
+      <LinkTimeCodeGeneration>UseFastLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+>>>>>>> develop
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -157,6 +161,10 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+=======
+    <ClCompile Include="CVkDeviceTest.cpp" />
+>>>>>>> develop
     <ClCompile Include="CVkPhysicalDeviceTest.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

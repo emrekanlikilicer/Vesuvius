@@ -129,6 +129,10 @@
       <SDLCheck>true</SDLCheck>
       <EnablePREfast>true</EnablePREfast>
       <AdditionalIncludeDirectories>..\..\..\..\Vulkan-LoaderAndValidationLayers\include\vulkan</AdditionalIncludeDirectories>
+<<<<<<< HEAD
+=======
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+>>>>>>> develop
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -146,12 +150,27 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ClInclude Include="CVkInstance.h" />
     <ClInclude Include="CVkPhysicalDevice.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CVkInstance.cpp" />
     <ClCompile Include="CVkPhysicalDevice.cpp" />
+=======
+    <ClInclude Include="CVkCommandPool.h" />
+    <ClInclude Include="CVkDevice.h" />
+    <ClInclude Include="CVkInstance.h" />
+    <ClInclude Include="CVkPhysicalDevice.h" />
+    <ClInclude Include="CVkQueue.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CVkCommandPool.cpp" />
+    <ClCompile Include="CVkDevice.cpp" />
+    <ClCompile Include="CVkInstance.cpp" />
+    <ClCompile Include="CVkPhysicalDevice.cpp" />
+    <ClCompile Include="CVkQueue.cpp" />
+>>>>>>> develop
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

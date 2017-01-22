@@ -35,5 +35,11 @@
     <ClCompile Include="CVkPhysicalDeviceTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
+=======
+    <ClCompile Include="CVkDeviceTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+>>>>>>> develop
   </ItemGroup>
 </Project>

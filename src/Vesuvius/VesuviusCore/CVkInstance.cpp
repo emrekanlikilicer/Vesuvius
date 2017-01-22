@@ -1,7 +1,14 @@
 #include "CVkInstance.h"
 
+<<<<<<< HEAD
 VkResult 
 vesuvius::CVkInstance::CreateInstance(
+=======
+using namespace vesuvius;
+
+VkResult 
+CVkInstance::CreateInstance(
+>>>>>>> develop
 	_In_     const VkInstanceCreateInfo&   CreateInstanceInfo, 
 	_In_opt_ const VkAllocationCallbacks*  AllocationCallbacks,
 	_Out_    std::shared_ptr<CVkInstance>& Instance
@@ -30,6 +37,7 @@ vesuvius::CVkInstance::CreateInstance(
 	return result;
 }
 
+<<<<<<< HEAD
 vesuvius::CVkInstance::CVkInstance()
 {
 	memset(&m_AllocationCallbacks, 0, sizeof(m_AllocationCallbacks));
@@ -43,6 +51,21 @@ vesuvius::CVkInstance::~CVkInstance()
 	if (m_AllocationCallbacks.useCallbacks)
 	{
 		pCallbacks = &m_AllocationCallbacks.callbacks;
+=======
+CVkInstance::CVkInstance()
+{
+	memset(&m_allocationCallbacks, 0, sizeof(m_allocationCallbacks));
+	memset(&m_instance, 0, sizeof(m_instance));
+}
+
+CVkInstance::~CVkInstance()
+{
+	VkAllocationCallbacks* pCallbacks = NULL;
+
+	if (m_allocationCallbacks.useCallbacks)
+	{
+		pCallbacks = &m_allocationCallbacks.callbacks;
+>>>>>>> develop
 	}
 
 	if (m_instance)
@@ -52,22 +75,35 @@ vesuvius::CVkInstance::~CVkInstance()
 }
 
 VkResult
+<<<<<<< HEAD
 vesuvius::CVkInstance::Create(
+=======
+CVkInstance::Create(
+>>>>>>> develop
 	_In_     const VkInstanceCreateInfo&  CreateInstanceInfo,
 	_In_opt_ const VkAllocationCallbacks* AllocationCallbacks
 )
 {
 	if (AllocationCallbacks != NULL)
 	{
+<<<<<<< HEAD
 		m_AllocationCallbacks.callbacks    = *AllocationCallbacks;
 		m_AllocationCallbacks.useCallbacks = true;
+=======
+		m_allocationCallbacks.callbacks    = *AllocationCallbacks;
+		m_allocationCallbacks.useCallbacks = true;
+>>>>>>> develop
 	}
 
 	return vkCreateInstance(&CreateInstanceInfo, AllocationCallbacks, &m_instance);
 }
 
 VkResult
+<<<<<<< HEAD
 vesuvius::CVkInstance::EnumeratePhysicalDevices(
+=======
+CVkInstance::EnumeratePhysicalDevices(
+>>>>>>> develop
 	_Out_ std::vector<CVkPhysicalDevice>&  PhysicalDevices
 ) noexcept
 {
@@ -113,3 +149,7 @@ vesuvius::CVkInstance::EnumeratePhysicalDevices(
 
 	return result;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> develop

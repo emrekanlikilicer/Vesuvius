@@ -24,6 +24,18 @@
     <ClInclude Include="CVkPhysicalDevice.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
+=======
+    <ClInclude Include="CVkDevice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CVkQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CVkCommandPool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+>>>>>>> develop
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CVkInstance.cpp">
@@ -32,5 +44,17 @@
     <ClCompile Include="CVkPhysicalDevice.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
+=======
+    <ClCompile Include="CVkDevice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CVkQueue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CVkCommandPool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+>>>>>>> develop
   </ItemGroup>
 </Project>
