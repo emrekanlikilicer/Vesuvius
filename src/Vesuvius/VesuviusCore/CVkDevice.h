@@ -46,8 +46,6 @@ namespace vesuvius
 
 	private:
 
-		std::weak_ptr<CVkDevice> m_thisWeakPtr;
-
 		VkDevice m_device;
 
 		struct

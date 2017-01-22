@@ -13,7 +13,13 @@
 #include "vulkan.h"
 
 #include "CVkInstance.h"
+#include "CVkPhysicalDevice.h"
+#include "CVkDevice.h"
+
 #include "Helper.h"
+
+#include <vector>
+#include <memory>
 
 // define ToString method for additional data types.
 

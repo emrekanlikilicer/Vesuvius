@@ -24,6 +24,9 @@ namespace vesuvius
 			_In_opt_ VkAllocationCallbacks*     AllocationCallbacks
 		);
 
+		CVkCommandPool(const CVkCommandPool&);
+		CVkCommandPool& operator=(const  CVkCommandPool&);
+
 		VkCommandPool              m_commandPool;
 		VkDevice                   m_device;
 

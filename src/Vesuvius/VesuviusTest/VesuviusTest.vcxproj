@@ -158,6 +158,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CVkCommandPoolTest.cpp" />
     <ClCompile Include="CVkDeviceTest.cpp" />
     <ClCompile Include="CVkPhysicalDeviceTest.cpp" />
     <ClCompile Include="stdafx.cpp">
