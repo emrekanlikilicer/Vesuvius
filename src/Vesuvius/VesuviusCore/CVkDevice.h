@@ -3,6 +3,7 @@
 #include "Vulkan.h"
 
 #include "CVkQueue.h"
+#include "CVkCommandPool.h"
 
 #include <memory>
 #include <vector>
@@ -22,6 +23,13 @@ namespace vesuvius
 			_Out_ std::shared_ptr<CVkQueue>&  Queue
 		) noexcept;
 
+		VkResult
+		CreateCommandPool(
+			_In_     VkCommandPoolCreateInfo          CommandPoolCreateInfo,
+			_In_opt_ VkAllocationCallbacks*           AllocationCallbacks,
+			_Out_    std::shared_ptr<CVkCommandPool>& CommandPool
+		) noexcept;
+
 		VkResult 
 		WaitIdle() noexcept;
 
@@ -37,6 +45,8 @@ namespace vesuvius
 		CVkDevice& operator=(const  CVkDevice&);
 
 	private:
+
+		std::weak_ptr<CVkDevice> m_thisWeakPtr;
 
 		VkDevice m_device;
 

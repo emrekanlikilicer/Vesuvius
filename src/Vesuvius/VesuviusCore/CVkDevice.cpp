@@ -40,6 +40,42 @@ CVkDevice::GetQueue(
 }
 
 VkResult 
+CVkDevice::CreateCommandPool(
+	_In_     VkCommandPoolCreateInfo          CommandPoolCreateInfo,
+	_In_opt_ VkAllocationCallbacks*           AllocationCallbacks,
+	_Out_    std::shared_ptr<CVkCommandPool>& CommandPool
+) noexcept
+{
+	CommandPool.reset();
+
+	VkCommandPool commandPool;
+
+	VkResult result = vkCreateCommandPool(m_device, 
+		                                  &CommandPoolCreateInfo,
+		                                  AllocationCallbacks,
+		                                  &commandPool );
+	if (result != VK_SUCCESS)
+	{
+		return result;
+	}
+
+	try
+	{
+		CommandPool.reset(new CVkCommandPool(m_device,
+			commandPool,
+			CommandPoolCreateInfo,
+			AllocationCallbacks));
+	}
+	catch (std::bad_alloc&)
+	{
+		vkDestroyCommandPool(m_device, commandPool, AllocationCallbacks);
+		return VK_ERROR_OUT_OF_HOST_MEMORY;
+	}
+
+	return VK_SUCCESS;
+}
+
+VkResult 
 CVkDevice::WaitIdle() noexcept
 {
 	return vkDeviceWaitIdle(m_device);

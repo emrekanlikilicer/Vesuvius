@@ -119,6 +119,46 @@ namespace vesuviusTest
 			}
 		}
 
+		TEST_METHOD(CreateCommandPool_Success)
+		{
+			for each(CVkPhysicalDevice physicalDevice in m_physicalDevices)
+			{
+				std::shared_ptr<CVkDevice> device;
+
+				VkDeviceCreateInfo deviceCreateInfo;
+				VkDeviceQueueCreateInfo deviceQueueCreateInfo;
+
+				memset(&deviceCreateInfo, 0, sizeof(deviceCreateInfo));
+				memset(&deviceQueueCreateInfo, 0, sizeof(deviceQueueCreateInfo));
+
+				deviceQueueCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
+				deviceQueueCreateInfo.queueCount = 1;
+				deviceQueueCreateInfo.queueFamilyIndex = 0;
+
+				deviceCreateInfo.queueCreateInfoCount = 1;
+				deviceCreateInfo.pQueueCreateInfos = &deviceQueueCreateInfo;
+
+				VkResult result = physicalDevice.CreateDevice(deviceCreateInfo,
+					NULL,
+					device);
+				Assert::AreEqual(result, VK_SUCCESS);
+				Assert::IsNotNull(device.get());
+
+				std::shared_ptr<CVkCommandPool> commandPool;
+
+				VkCommandPoolCreateInfo info;
+				memset(&info, 0, sizeof(info));
+				
+				info.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
+
+				result = device->CreateCommandPool(info, NULL, commandPool);
+				
+				Assert::AreEqual(result, VK_SUCCESS);
+				Assert::IsNotNull(commandPool.get());
+			}
+		}
+
+
 	};
 
 	std::shared_ptr<CVkInstance>   CVkDeviceTest::m_instance;
