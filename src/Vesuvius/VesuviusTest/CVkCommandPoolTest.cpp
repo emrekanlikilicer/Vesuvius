@@ -46,6 +46,25 @@ namespace vesuviusTest
 			result = commandPool->Reset(flags);
 			Assert::AreEqual(result, VK_SUCCESS);
 		}
+
+		TEST_METHOD(AllocateCommandBuffers_Success)
+		{
+			VkCommandPoolCreateInfo info;
+			memset(&info, 0, sizeof(info));
+			info.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
+
+			std::shared_ptr<CVkCommandPool> commandPool;
+			VkResult result = m_device->CreateCommandPool(info, NULL, commandPool);
+			Assert::AreEqual(result, VK_SUCCESS);
+
+			const int COMMAND_BUFFER_COUNT = 10;
+			std::vector<std::shared_ptr<CVkCommandBuffer>> commandBuffers;
+			result = commandPool->AllocateCommandBuffers(VK_COMMAND_BUFFER_LEVEL_PRIMARY, COMMAND_BUFFER_COUNT, commandBuffers);
+			
+			Assert::AreEqual(result, VK_SUCCESS);
+			Assert::AreEqual((int)commandBuffers.size(), COMMAND_BUFFER_COUNT);
+
+		}
 	};
 
 	std::shared_ptr<CVkDevice>   CVkCommandPoolTest::m_device;

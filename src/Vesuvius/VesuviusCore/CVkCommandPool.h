@@ -1,7 +1,11 @@
 #pragma once
 
 #include "Vulkan.h"
+
+#include "CVkCommandBuffer.h"
+
 #include <memory>
+#include <vector>
 
 namespace vesuvius
 {
@@ -10,7 +14,19 @@ namespace vesuvius
 	public:
 
 		VkResult 
-		Reset(_In_ VkCommandPoolResetFlags Flags);
+		Reset(_In_ VkCommandPoolResetFlags Flags) noexcept;
+
+		void
+		Destroy() noexcept;
+
+		VkResult
+		AllocateCommandBuffers(
+			_In_  VkCommandBufferLevel                            CommandBufferLevel,
+			_In_  uint32_t                                        CommandBufferCount,
+			_Out_ std::vector<std::shared_ptr<CVkCommandBuffer>>& CommandBuffers
+		) noexcept;
+
+		~CVkCommandPool();
 
 	private:
 		friend class CVkDevice;
@@ -33,11 +49,12 @@ namespace vesuvius
 		uint32_t                   m_queueFamilyIndex;
 		VkCommandPoolCreateFlags   m_flags;
 
-
 		struct
 		{
 			VkAllocationCallbacks callbacks;
 			bool                  useCallbacks;
 		} m_allocationCallbacks;
+
+		bool m_destroyed;
 	};
 }
