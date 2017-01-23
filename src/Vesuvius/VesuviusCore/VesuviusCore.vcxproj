@@ -147,6 +147,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CVkCommandBuffer.h" />
     <ClInclude Include="CVkCommandPool.h" />
     <ClInclude Include="CVkDevice.h" />
     <ClInclude Include="CVkInstance.h" />
@@ -154,6 +155,7 @@
     <ClInclude Include="CVkQueue.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CVkCommandBuffer.cpp" />
     <ClCompile Include="CVkCommandPool.cpp" />
     <ClCompile Include="CVkDevice.cpp" />
     <ClCompile Include="CVkInstance.cpp" />

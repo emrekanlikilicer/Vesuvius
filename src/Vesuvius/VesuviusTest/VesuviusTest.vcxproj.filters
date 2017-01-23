@@ -41,5 +41,8 @@
     <ClCompile Include="CVkCommandPoolTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CVkCommandBufferTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
